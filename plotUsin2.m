@@ -1,5 +1,6 @@
 function plotans = plotUsin2(L,U1a,U2a,U3a,U4a,U5a,U1b,U2b,U3b,U4b,U5b)
     % need to follow function with title and hold off
+    % This function plots all algorithm results in relation to the Sine-Squared Algorithm
 
     [n1a,j1a] = size(U1a);
     xspan1a = linspace(0,L,j1a);
