@@ -1,11 +1,11 @@
 % Forward Time Backward Space (FTBS), Forward Euler
 function [U,CFL] = FTBS(a, CFL1, tspan, delt, L, eqn)
-    % a = linear advection coefficient
+    % a = linear advection coefficient / wave speed
+    % CFL1 = desired CFL number to analyze
     % tspan = total time to differentiate over
+    % delt = differentiable time step
     % L = space domain
-    % N = number of time points or iterations
-    % J = number of space points or iterations
-    % U_j1, U_j2 = initial conditions U(1,j-1), U(1,j)
+    % eqn = initial conditions of interest
     
     [CFL, J] = CFLdes(CFL1, a, delt, L);
     N = round(tspan/delt);
