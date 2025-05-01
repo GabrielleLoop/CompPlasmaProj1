@@ -32,15 +32,14 @@ function [U, CFL] = HighOrder(a, CFL1, tspan, delt, L, eqn)
 
         % Stage 2: compute spatial derivative at U_star
         for j = 1:J
-            jm2 = mod(j - 3, J) + 1;
-            jm1 = mod(j - 2, J) + 1;
-            jp1 = mod(j    , J) + 1;
-            jp2 = mod(j + 1, J) + 1;
+            jm2 = mod(j-3, J) + 1;
+            jm1 = mod(j-2, J) + 1;
+            jp1 = mod(j, J) + 1;
+            jp2 = mod(j+1, J) + 1;
     
             dU2(j) = a/(12*delx) * (-U_1a(jp2) + 8*U_1a(jp1) - 8*U_1a(jm1) + U_1a(jm2));
         end
 
-        % RK2 step
         if n~=N
         U(n+1,:) = U(n,:) - 0.5 * delt * (dU1 + dU2);
         U(:,1) = U(:,J);
