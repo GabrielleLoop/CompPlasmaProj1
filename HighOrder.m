@@ -1,10 +1,10 @@
 function [U, CFL] = HighOrder(a, CFL1, tspan, delt, L, eqn)
-    % a     = advection speed
-    % CFL1  = target CFL number
-    % tspan = final time
-    % delt  = time step
-    % L     = domain length
-    % eqn   = initial condition function handle
+    % a = linear advection coefficient / wave speed
+    % CFL1 = desired CFL number to analyze
+    % tspan = total time to differentiate over
+    % delt = differentiable time step
+    % L = space domain
+    % eqn = initial conditions of interest
 
     [CFL, J] = CFLdes(CFL1, a, delt, L);  % Get actual CFL and J
     N = round(tspan / delt);             % Number of time steps
@@ -47,20 +47,3 @@ function [U, CFL] = HighOrder(a, CFL1, tspan, delt, L, eqn)
         end
     end
 end
-
-% =========================
-% 4th-order centered space derivative
-% Periodic BCs assumed
-%function dU = spatial_derivative_4th_order(U, dx, a)
-%    J = length(U);
-%    dU = zeros(1, J);
-%
-%    for j = 1:J
-%        jm2 = mod(j - 3, J) + 1;
-%        jm1 = mod(j - 2, J) + 1;
-%        jp1 = mod(j    , J) + 1;
-%        jp2 = mod(j + 1, J) + 1;
-%
-%        dU(j) = a/(12*dx) * (-U(jp2) + 8*U(jp1) - 8*U(jm1) + U(jm2));
-%    end
-%end
