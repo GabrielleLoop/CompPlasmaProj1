@@ -1,11 +1,11 @@
 % Lax-Friedrichs (LF)
 function [U,CFL] = LF(a, CFL1, tspan, delt, L, eqn)
-    % a = linear advection coefficient
+    % a = linear advection coefficient / wave speed
+    % CFL1 = desired CFL number to analyze
     % tspan = total time to differentiate over
+    % delt = differentiable time step
     % L = space domain
-    % N = number of time points or iterations
-    % J = number of space points or iterations
-    % U_j1, U_j2, U_j3 = initial conditions U(1,j-1), U(1,j), U(1,j+1)
+    % eqn = initial conditions of interest
     
     [CFL, J] = CFLdes(CFL1, a, delt, L);
     N = tspan/delt;
