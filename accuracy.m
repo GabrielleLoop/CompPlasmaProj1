@@ -1,4 +1,9 @@
 function [errors,CFL_actual,delt_values] = accuracy(func, n)
+% This function calculates the accuracy of an algorithm in relation to an initial state. Note that the CFL number and
+% other parameters are set in relation to the total system in CALCULATIONS.m
+
+% func = algorithm of interest
+% n = parameter to specify initial conditions
 
     a = 1;
     tspan = 1;
